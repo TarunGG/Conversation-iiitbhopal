@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale    =1.0" />
+    <title>FeedBack | Conversation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="../css/logo1.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/preLoader.css" />
+    <link rel="stylesheet" href="../css/feedback.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Merienda"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Dancing Script"
+    />
+  </head>
+
+  <body>
+    <div id="preLoader"></div>
+    <div id="mainCode">
+      <div id="formDiv">
+        <div class="headingHome">
+          <h1 id="heading">Feedback</h1>
+          <a href="/" title="Go Home" id="home"
+            ><i class="fa-solid fa-house-user"></i
+          ></a>
+        </div>
+        <div class="main container">
+          <form method="post" enctype="text/plain" id="form">
+            <label for="uname">Write your UserName : *</label>
+            <input
+              type="text"
+              name="uname"
+              id="usernameInp"
+              autocomplete="off"
+              required
+            />
+            <br />
+            <label for="exp"
+              >How was your overall experience about this website : *</label
+            >
+            <div class="container expeDiv">
+              <input
+                type="radio"
+                name="expe"
+                id="vus"
+                value="very unsatisfied"
+                required
+              />
+              <label for="vus" class="lexpe">Worst</label>
+              <input type="radio" name="expe" id="us" value="unsatisfied" />
+              <label for="us" class="lexpe">Bad</label>
+              <input type="radio" name="expe" id="n" value="neutral" />
+              <label for="n" class="lexpe">Average</label>
+              <input type="radio" name="expe" id="s" value="satisfied" />
+              <label for="s" class="lexpe">Good</label>
+              <input type="radio" name="expe" id="vs" value="very satisfied" />
+              <label for="vs" class="lexpe">Excellent</label>
+            </div>
+            <!-- <label for="bug">Have you find any bug in website ? share screenshot here &nbsp;
+        <input type="file" id="bug" name="bug" style="font-size: calc(.5rem + .5vw);width: calc(10rem + 5vw);"/>
+        </label>
+        <br /> -->
+            <label for="feedback">Give Your Feedback : *</label>
+            <br />
+            <textarea
+              name="feedback"
+              id="feedback"
+              placeholder="Write your feedback here..."
+              autocomplete="off"
+              required
+            ></textarea>
+            <br />
+            <button class="btn btn-primary" id="btn" type="submit">
+              Send Feedback
+            </button>
+          </form>
+        </div>
+      </div>
+      <div id="popup" style="display: none">
+        <div id="popupDiv">
+          <p id="thankyou">Thank You</p>
+          <p id="thankyouMsg">Your feedback has been submitted successfully.</p>
+          <a href="/"
+            ><button class="btn btn-primary" id="btn2" title="Home">
+              <i class="fa-solid fa-arrow-left"></i> Back Home
+            </button></a
+          >
+        </div>
+      </div>
+    </div>
+    <script src="../js/preLoader.js"></script>
+    <script
+      src="https://kit.fontawesome.com/aab988c4f3.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/feedback.js"></script>
+  </body>
+</html>

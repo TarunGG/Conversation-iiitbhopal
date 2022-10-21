@@ -1,0 +1,168 @@
+body {
+  background-color: #3f89c6;
+  font-family: Merienda;
+  color: white;
+}
+
+.headingHome {
+  text-align: center;
+  margin-top: calc(0.5rem + 0.5vw);
+  margin-bottom: calc(1.1rem + 0.5vw);
+}
+
+.headingHome h1 {
+  font-size: calc(1.2rem + 1vw);
+}
+
+#home {
+  color: black;
+  font-size: calc(1.1rem + 1vw);
+  position: absolute;
+  top: calc(0.3rem + 0.5vw);
+  right: calc(0.1rem + 1vw);
+}
+
+.main {
+  background-color: #ffffff;
+  color: black;
+  width: calc(7rem + 50vw);
+  box-shadow: 0 0 10px 1px rgb(26, 26, 26);
+  border-radius: 10px;
+  padding-left: calc(1rem + 1vw);
+  padding-right: calc(1rem + 1vw);
+  padding-top: calc(0.5rem + 1vw);
+  padding-bottom: calc(1.8rem + 1vw);
+  margin: auto;
+}
+
+input[type="text"] {
+  width: 100%;
+  max-width: 25em;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  background-color: #cee6f9;
+  padding: 5px 0 5px 10px;
+  height: 30px;
+  font-size: calc(0.7rem + 0.5vw);
+}
+
+input[type="text"]:focus {
+  outline: 2px solid orange;
+}
+
+textarea {
+  background-color: #cee6f9;
+  width: 100%;
+  border-radius: 3px;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  padding-left: calc(0.5rem + 0.5vw);
+  padding-right: calc(0.5rem + 0.5vw);
+  height: calc(6rem + 3vw);
+  margin-bottom: 8px;
+  font-size: calc(0.7rem + 0.5vw);
+}
+
+input[type="radio"] {
+  cursor: pointer;
+  width: calc(0.5rem + 0.5vw);
+  height: calc(0.4rem + 0.5vw);
+}
+
+label {
+  font-size: calc(0.8rem + 0.5vw);
+  margin: 10px;
+  margin-bottom: calc(0.2rem + 0.4vw);
+}
+
+.lexpe {
+  color: rgb(78, 76, 76);
+  font-size: calc(0.6rem + 0.5vw);
+  cursor: pointer;
+}
+
+#btn {
+  background: #1878c7;
+  border-radius: 10px;
+  float: right;
+  position: relative;
+  font-size: calc(0.7rem + 0.4vw);
+  bottom: calc(0.9rem + 0.5vw);
+  margin-top: calc(0.5rem + 0.5vw);
+}
+
+#btn:hover {
+  background: #115fa3;
+}
+
+#btn:active {
+  background-color: #1878c7;
+}
+
+#popupDiv {
+  width: calc(10rem + 40vw);
+  height: calc(12rem + 5vw);
+  border: 1px solid black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  color: #3f89c6;
+  margin: auto;
+  position: relative;
+  top: calc(7rem + 5vh);
+  padding: 0;
+}
+
+#thankyou {
+  font-size: calc(2rem + 3vw);
+  font-family: Dancing Script;
+}
+
+#thankyouMsg {
+  font-size: calc(0.8rem + 0.5vw);
+}
+
+#btn2 {
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+  font-family: cursive;
+  transition: all 0.5s;
+  overflow: visible;
+  cursor: pointer;
+  border: none;
+  background-color: rgb(241, 197, 255);
+  width: calc(7rem + 3vw);
+  font-size: calc(0.7rem + 0.4vw);
+}
+
+#btn2:hover {
+  background-color: rgb(233, 163, 254);
+}
+
+#btn2:active {
+  background-color: rgb(241, 197, 255);
+}
+
+@media (max-width: 975px) {
+  .expeDiv {
+    display: flex;
+    flex-direction: column;
+    margin-top: calc(0.5rem + 0.5vw);
+  }
+
+  .lexpe {
+    position: relative;
+    bottom: 1.1rem;
+    bottom: calc(0.9rem + 0.5vw);
+    left: calc(0.5rem + 0.5vw);
+    margin: calc(0.2rem + 0.1vw);
+  }
+
+  .expeDiv + label {
+    margin-top: 0;
+  }
+}

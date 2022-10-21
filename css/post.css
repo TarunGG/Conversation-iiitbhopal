@@ -1,0 +1,133 @@
+body {
+  background-color: #3f89c6;
+  font-family: Merienda;
+  color: white;
+  margin-top: calc(0.5rem + 0.5vw);
+}
+
+.headingHome {
+  text-align: center;
+  margin-bottom: calc(1.1rem + 0.5vw);
+}
+
+.headingHome h1 {
+  margin-top: 0;
+  font-size: calc(1.5rem + 1vw);
+}
+
+#home {
+  color: black;
+  font-size: calc(1.3rem + 1vw);
+  position: absolute;
+  top: calc(0.5rem + 0.3vw);
+  right: calc(0.3rem + 1vw);
+}
+
+.containerDiv {
+  background: white;
+  border: 1px solid black;
+  width: calc(10rem + 50vw);
+  box-shadow: 0 0 10px 1px rgba(23, 23, 23, 0.456);
+  border-radius: 10px;
+  padding-top: calc(1rem + 0.5vw);
+  padding-bottom: calc(0.5rem + 0.5vw);
+  padding-left: calc(1rem + 0.5vw);
+  padding-right: calc(1rem + 0.5vw);
+  margin-bottom: calc(2rem);
+}
+
+hr {
+  color: black;
+  margin: calc(0.5rem + 0.5vw);
+}
+
+.threadCont,
+.posts {
+  border-radius: calc(1rem + 0.7vw);
+  border-top-right-radius: 0;
+  background-color: #2f4552;
+  color: white;
+  padding-top: calc(0.5rem + 0.5vw);
+  padding-bottom: calc(0.2rem + 0.5vw);
+  padding-left: calc(0.8rem + 0.5vw);
+  padding-right: calc(0.8rem + 0.5vw);
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 0;
+  margin-bottom: calc(0.7rem + 1vw);
+  font-size: calc(0.7rem + 0.5vw);
+  min-height: calc(4rem + 1vw);
+  position: relative;
+}
+
+.threadCont small {
+  font-size: calc(0.6rem + 0.3vw);
+  position: absolute;
+  bottom: calc(0.3rem + 0.2vw);
+}
+
+.posts {
+  border-bottom-left-radius: 0;
+  border-top-right-radius: calc(1rem + 0.7vw);
+  background-color: rgb(2, 93, 129);
+  position: relative;
+}
+
+.posts p {
+  font-size: calc(0.7rem + 0.2vw);
+}
+
+.posts p small {
+  position: absolute;
+  bottom: calc(0.3rem);
+  font-size: calc(0.6rem + 0.3vw);
+}
+
+br + hr {
+  margin-top: -10px;
+}
+
+h3 {
+  margin-left: 15px;
+  margin-bottom: 0;
+  color: black;
+  font-size: calc(1rem + 0.5vw);
+}
+
+#replyForm {
+  display: flex;
+  justify-content: center;
+  margin-top: calc(1rem + 0.5vw);
+}
+
+#reply,
+#login {
+  width: calc(30rem + 15vw);
+  height: calc(2rem + 0.5vw);
+  border-radius: 20px;
+  padding-left: calc(0.5rem + 0.5vw);
+  font-size: calc(0.7rem + 0.4vw);
+}
+
+#submit {
+  border: none;
+  border-radius: 50%;
+  padding: calc(0.5rem + 0.5vw);
+  position: relative;
+  right: 1.5rem;
+  bottom: calc(0.2rem + 0.5vw);
+  background-color: rgb(2, 80, 110);
+  color: white;
+  transition: all 0.25s;
+}
+
+#submit:hover {
+  background-color: rgb(3, 61, 84);
+}
+
+#submit:active {
+  background-color: rgb(2, 80, 110);
+}
+
+#login:active {
+  background-color: rgb(215, 215, 215);
+}

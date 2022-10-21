@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversation - Let's Communicate</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+    />
+    <link rel="shortcut icon" href="../css/logo1.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/preLoader.css" type="text/css" />
+    <link href="../css/index.min.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Merienda"
+    />
+  </head>
+
+  <body>
+    <div id="preLoader"></div>
+    <div id="mainCode">
+      <nav class="navbar navbar-expand-lg py-1">
+        <div class="container-fluid" style="padding: 0 calc(0.2rem + 0.6vw)">
+          <a class="navbar-brand p-0" id="heading" href="#"
+            ><img src="../css/logo1.jpg" id="C" />onversation</a
+          >
+
+          <form class="search" onsubmit="return false" id="searchForm">
+            <input
+              class="form-control me-2 shadow-none"
+              type="text"
+              placeholder="Search here..."
+              id="searchInput"
+              name="searchInputName"
+              onkeyup="search(document.getElementById('searchInput').value)"
+            />
+            <button
+              class="btn btn-outline-success shadow-none"
+              type="button"
+              id="clearBtn"
+              title="Clear Search"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </form>
+
+          <button
+            class="navbar-toggler shadow-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            id="toggleBtn"
+          >
+            <span class="navbar-toggler-icon" id="toggleBtnIcon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <hr style="margin-top: 10px; margin-bottom: 10px" />
+            <div class="containerNav">
+              <a class="nav-link navBarLink" href="#">Home</a>
+              <a class="nav-link navBarLink" href="/profile">Profile</a>
+              <a class="nav-link navBarLink" href="/feedback">FeedBack</a>
+              <a class="nav-link navBarLink" id="logIn" href="/login">LogIn</a>
+              <div id="search2">
+                <input
+                  type="text"
+                  id="search2Inp"
+                  placeholder="Search here..."
+                  onkeyup="search(document.getElementById('search2Inp').value)"
+                />
+                <i class="fa-solid fa-magnifying-glass" id="search2Icon"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <br />
+
+      <div class="heading-2Div m-2">
+        <h2 id="heading-2">
+          <a>Start A New Conversation Or Join One Below!</a>
+        </h2>
+      </div>
+
+      <div id="addNewDiv">
+        <hr class="addNewHr" />
+        <a href="/create"
+          ><button id="addNewBtn">
+            <i class="fa-solid fa-plus"></i>&nbsp; New Conversation
+          </button></a
+        >
+        <hr class="addNewHr" />
+      </div>
+
+      <p id="noResult">No results found...</p>
+      <div class="container-fluid cardDiv">
+        <div class="container-fluid row m-2">
+          <a href="#"
+            ><button title="Back to Top" id="goAtTopArrow">
+              <i class="fa-solid fa-arrow-up"></i></button
+          ></a>
+          {{range .}}
+
+          <div
+            class="container-fluid card thread"
+            style="width: 35em; height: 21em"
+          >
+            <div class="card-body">
+              <h5 class="card-title">{{.Topic}}</h5>
+              <p class="card-text">{{.Content}}</p>
+
+              <small
+                >Started By : {{.UserName}}<br />Started At :
+                {{.CreatedAt}}</small
+              >
+              <a
+                href="/login"
+                class="btn btn-primary shadow-none"
+                title="Join Conversation"
+              >
+                <span class="joinTxt"> Join </span
+                ><span class="conversationTxt">Conversation</span>
+                <i class="fa-solid fa-right-to-bracket joinBtn"></i>
+              </a>
+            </div>
+          </div>
+          {{end}}
+        </div>
+      </div>
+
+      <footer>
+        <div class="footerContent">
+          <ul class="developer">
+            <li><strong>Developed By</strong></li>
+            <p></p>
+            <li>Tarun Garg</li>
+            <li>Dhruv Rajpoot</li>
+          </ul>
+          <ul class="developer">
+            <li><strong>Contact Us</strong></li>
+            <p></p>
+            <li>
+              <i class="fa-solid fa-envelope mailIcon"></i>&nbsp;<a
+                href="mailto:tarungarg8901@gmail.com"
+              >
+                tarungarg8901@gmail.com</a
+              >
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope mailIcon"></i>&nbsp;<a
+                href="mailto:dhruv.kutarya@gmail.com"
+              >
+                dhruv.iiitbhopal@outlook.com</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div id="copyright">Copyright &copy; 2022. All rights reserved</div>
+      </footer>
+    </div>
+    <script src="../js/preLoader.js"></script>
+    <script
+      src="https://kit.fontawesome.com/aab988c4f3.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/index.js"></script>
+  </body>
+</html>

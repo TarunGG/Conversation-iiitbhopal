@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In | Conversation</title>
+    <link rel="shortcut icon" href="../css/logo1.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/preLoader.css" type="text/css" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Merienda"
+    />
+  </head>
+  <body onload="checkUserPass(p,pl)">
+    <script>
+      function checkUserPass(p, pl) {
+        let passWrong = "{{.}}";
+        console.log(passWrong);
+        let passWrongMsg = document.getElementById("passWrongMsg");
+        if (passWrong == "true") {
+          p.style["border-bottom"] = "2px solid red";
+          pl.style.color = "red";
+          passWrongMsg.style.visibility = "visible";
+          setTimeout(function () {
+            passWrongMsg.style.visibility = "hidden";
+            p.style["border-bottom"] = "1px solid black";
+            pl.style.color = "black";
+          }, 4000);
+        }
+      }
+    </script>
+    <div id="preLoader"></div>
+    <div id="mainCode">
+      <div class="headingHome">
+        <h1>Login</h1>
+        <a href="/" title="Go Home" id="home"
+          ><i class="fa-solid fa-house-user"></i
+        ></a>
+      </div>
+      <div class="login-form">
+        <form action="/loginauth" method="post">
+          <label for="user" id="userl">UserName*</label>
+          <br />
+          <input
+            type="text"
+            id="user"
+            name="rUname"
+            autocomplete="off"
+            required
+          />
+          <br />
+          <p></p>
+          <label for="p" id="pl">Password*</label>
+          <br />
+          <input type="password" name="rp" id="p" autocomplete="off" required />
+          <button
+            type="button"
+            onclick="visible(p,'passBtn')"
+            class="visibleBtn"
+            title="Show"
+            id="passBtn"
+          >
+            <i class="fa-regular fa-eye-slash"></i>
+          </button>
+          <span
+            id="passWrongMsg"
+            style="
+              visibility: hidden;
+              color: red;
+              font-size: calc(0.7rem + 0.2vw);
+            "
+            >Incorrect Password</span
+          >
+          <a href="/forgetpass" id="forgot">Forgot Password?</a>
+          <br />
+          <br />
+          <div id="btnDiv">
+            <button type="submit" id="btn">Login</button>
+          </div>
+          <br />
+        </form>
+      </div>
+      <div class="signup">
+        <p>
+          New to Conversation?<br />
+          <a href="/signup" id="signup">create a new account</a>
+        </p>
+      </div>
+    </div>
+    <!-- <script src="../js/preLoader.js"></script> -->
+    <script
+      src="https://kit.fontawesome.com/aab988c4f3.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function visible(ele, mainEle) {
+        let x = document.getElementById(mainEle);
+        if (ele.type === "password") {
+          x.innerHTML = `<i class="fa-regular fa-eye"></i>`;
+          x.setAttribute("title", "Hide");
+          ele.type = "text";
+        } else {
+          x.innerHTML = `<i class="fa-regular fa-eye-slash"></i>`;
+          x.setAttribute("title", "Show");
+          ele.type = "password";
+        }
+      }
+    </script>
+  </body>
+</html>

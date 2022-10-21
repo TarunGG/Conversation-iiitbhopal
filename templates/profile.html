@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile | Conversation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="../css/logo1.jpg" type="image/x-icon" />
+
+    <link rel="stylesheet" href="../css/preLoader.css" type="text/css" />
+    <link rel="stylesheet" href="../css/profile.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Merienda"
+    />
+  </head>
+
+  <body>
+    <div id="preLoader"></div>
+    <div id="mainCode">
+      <div id="headingHome">
+        <h1>Profile</h1>
+        <a href="/" title="Go Home" id="home"
+          ><i class="fa-solid fa-house-user"></i
+        ></a>
+      </div>
+
+      <div class="container containerDiv">
+        <br />
+        <div class="container insideDiv">
+          <div class="img">
+            <img
+              src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8="
+              alt=""
+            />
+          </div>
+          <hr />
+          <div class="container row" id="insideDiv2">
+            <div class="col-6">
+              <h6><strong>User Name</strong></h6>
+              <h6 class="text">{{.UserName}}</h6>
+              <br />
+              <h6><strong>Full Name</strong></h6>
+              <h6 class="text">{{.Name}}</h6>
+              <br />
+              <h6><strong>Email</strong></h6>
+              <h6 class="text">{{.Email}}</h6>
+            </div>
+            <div class="col-6">
+              <h6 id="noOfConv">
+                <strong>No.&nbsp;of&nbsp;Conversation&nbsp;Started</strong>
+              </h6>
+              <h6 class="text">{{.NoThread}}</h6>
+              <br />
+              <h6><strong>No. of Replies</strong></h6>
+              <h6 class="text">{{.NoPost}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/preLoader.js"></script>
+    <script
+      src="https://kit.fontawesome.com/aab988c4f3.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reply | Conversation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+    />
+    <link rel="shortcut icon" href="../css/logo1.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/preLoader.css" type="text/css" />
+    <link href="../css/post.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Merienda"
+    />
+  </head>
+
+  <body>
+    <div id="preLoader"></div>
+    <div id="mainCode">
+      <div class="headingHome">
+        <h1>Reply</h1>
+        <a href="/" title="Go Home" id="home"
+          ><i class="fa-solid fa-house-user"></i
+        ></a>
+      </div>
+      <div class="container containerDiv">
+        <div class="thread">
+          <h3>Topic</h3>
+          <hr />
+          <h4 class="threadCont" id="topic">
+            {{.Thread.Topic}}
+            <br />
+            <small>Created by - {{.UserName}}</small>
+          </h4>
+          <h3>Description</h3>
+          <hr />
+          <p class="threadCont" id="decription">{{.Thread.Content}}</p>
+          <!-- <a href="#reply">reply</a> -->
+        </div>
+        <h3>Replies</h3>
+        <hr />
+        {{range .Post}}
+        <div class="posts">
+          <p>
+            {{.Content}}
+            <br />
+            <small> Replied By - <strong>{{.UserName}}</strong> </small>
+          </p>
+        </div>
+        {{end}}
+        <br />
+        <hr />
+        <form action="" method="post" id="replyForm" class="container">
+          <input
+            name="reply"
+            id="reply"
+            placeholder="Reply here..."
+            autocomplete="off"
+          />
+          <button type="submit" id="submit" title="Reply">
+            <i class="fa-sharp fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+    <script src="../js/preLoader.js"></script>
+
+    <script
+      src="https://kit.fontawesome.com/aab988c4f3.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

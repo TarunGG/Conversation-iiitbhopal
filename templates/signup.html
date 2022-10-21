@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../css/logo1.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/preLoader.css" type="text/css" />
+    <link rel="stylesheet" href="../css/signup.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Merienda"
+    />
+    <title>Sign Up | Conversation</title>
+  </head>
+  <body onload="checkExistUser(user,userl)">
+    <script>
+      function checkExistUser(user, userl) {
+        let userNameExist = "{{.Isusername}}";
+        let userErrorMsg = document.getElementById("userErrorMsg");
+        if (userNameExist == "true") {
+          user.style["border-bottom"] = "2px solid red";
+          userl.style.color = "red";
+          userErrorMsg.style.display = "block";
+          setTimeout(function () {
+            userErrorMsg.style.display = "none";
+            user.style["border-bottom"] = "1px solid black";
+            userl.style.color = "black";
+          }, 4000);
+        }
+      }
+    </script>
+    <div id="preLoader"></div>
+    <div id="mainCode">
+      <div id="headingHome">
+        <h1>Sign Up</h1>
+        <a href="/" title="Go Home" id="home"
+          ><i class="fa-solid fa-house-user"></i
+        ></a>
+      </div>
+      <a href="/" title="Go Home" id="home"
+        ><i class="fa-solid fa-house-user"></i
+      ></a>
+      <form method="post" onsubmit="return validate()" action="">
+        <label for="user" id="userl">UserName*</label>
+        <br />
+        <input
+          type="text"
+          id="user"
+          name="rUname"
+          autocomplete="off"
+          required
+        />
+        <p
+          id="userErrorMsg"
+          style="
+            display: none;
+            color: red;
+            margin-top: calc(-0.8rem - 0.8vw);
+            margin-bottom: calc(-1rem + 0.5vw);
+            font-size: calc(0.7rem + 0.2vw);
+          "
+        >
+          username already exist
+        </p>
+        <br />
+        <label for="fname" id="fnamel">Full Name*</label>
+        <br />
+        <input
+          type="text"
+          id="fname"
+          name="rname"
+          autocomplete="off"
+          value="{{.Name}}"
+          required
+        />
+        <br />
+        <label for="email" id="emaill">Email*</label>
+        <br />
+        <input
+          type="email"
+          name="rem"
+          id="email"
+          autocomplete="off"
+          value="{{.Email}}"
+          required
+        />
+        <br />
+        <label for="p" id="pl">Password*</label>
+        <br />
+        <input
+          type="password"
+          name="rp"
+          id="p"
+          minlength="5"
+          autocomplete="off"
+          required
+        />
+        <button
+          type="button"
+          onclick="visible(p,'passBtn')"
+          class="visibleBtn"
+          title="Show"
+          id="passBtn"
+        >
+          <i class="fa-regular fa-eye-slash"></i>
+        </button>
+        <br />
+        <label for="cp" id="cpl">Confirm Password*</label>
+        <br />
+        <input
+          type="password"
+          name="rcp"
+          id="cp"
+          minlength="5"
+          autocomplete="off"
+          required
+        />
+        <button
+          type="button"
+          onclick="visible(cp,'cpassBtn')"
+          class="visibleBtn"
+          title="Show"
+          id="cpassBtn"
+        >
+          <i class="fa-regular fa-eye-slash"></i>
+        </button>
+        <p id="error">Password Not Match</p>
+        <button class="button" type="submit" id="btn">Sign up</button>
+        <!-- <br />
+      <hr class="ORhr" />
+      OR
+      <hr class="ORhr" />
+      <br /> -->
+        <!-- <button class="google"> -->
+        <!-- <img
+          src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+        /> -->
+        <!-- <p>Sign in with Google</p> -->
+        <!-- </button> -->
+        <!-- <br /> -->
+        <hr
+          style="
+            margin-bottom: -10px;
+            width: 80%;
+            position: relative;
+            right: 30px;
+          "
+        />
+        <p id="alreadyUser">Already a user?<a href="/login">Login</a></p>
+      </form>
+    </div>
+    <!-- <script src="../js/preLoader.js"></script> -->
+    <script
+      src="https://kit.fontawesome.com/aab988c4f3.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/signup.js"></script>
+  </body>
+</html>

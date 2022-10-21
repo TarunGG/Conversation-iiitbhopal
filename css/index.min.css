@@ -1,0 +1,524 @@
+body {
+  color: black;
+  background-color: #3f89c6;
+  font-family: Merienda;
+}
+
+#heading {
+  font-family: "Times New Roman", Times, serif;
+  font-size: calc(1.4rem + 0.5vw);
+  font-weight: bold;
+  color: #046ec4;
+  font-style: italic;
+}
+
+#C {
+  width: calc(1.7rem + 0.6vw);
+  height: calc(1.7rem + 0.6vw);
+}
+
+nav {
+  border-bottom: 2px solid #0383ec;
+  box-shadow: 1px 1px 6px 2px rgb(86, 82, 82);
+  background-color: white;
+}
+
+.navbar {
+  position: sticky;
+  z-index: 2;
+  top: 1px;
+  outline: 1px solid white;
+}
+
+#search2 {
+  display: none;
+}
+
+.search {
+  width: calc(5rem + 35vw);
+  margin-left: 8%;
+  margin-right: 5%;
+  display: flex;
+}
+
+#searchInput {
+  font-size: calc(0.8rem + 0.3vw);
+  border-radius: 25px;
+}
+
+#clearBtn {
+  border-radius: 50%;
+  border-color: gray;
+  background-color: white;
+  color: gray;
+}
+
+#clearBtn:hover {
+  background-color: rgb(100, 100, 100);
+  color: white;
+}
+
+#clearBtn:active {
+  background-color: white;
+  color: gray;
+}
+
+#toggleBtn {
+  font-size: calc(0.5rem + 1vw);
+  padding: calc(0.2rem + 0.1vw);
+}
+
+#toggleBtnIcon {
+  font-size: calc(0.9rem + 0.5vw);
+}
+
+.containerNav {
+  float: right;
+  margin-left: auto;
+  display: flex;
+}
+
+/* Under Line  Effect */
+.containerNav a {
+  font-size: calc(0.9rem + 0.3vw);
+  position: relative;
+  margin-left: calc(0.6rem + 0.5vw);
+}
+
+.containerNav a:after {
+  transform: scaleX(0);
+  width: 100%;
+  height: 2.5px;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  content: "";
+  transition: transform 0.25s ease-in-out;
+  background-color: rgb(57, 143, 255);
+}
+
+.containerNav a:hover:after {
+  transform: scaleX(1);
+  /* transform-origin: bottom left;
+  transform-origin: top left; */
+}
+
+#logIn {
+  padding: 1px 15px 1px 15px;
+  border-radius: 10px;
+  background: green;
+  color: white;
+  cursor: pointer;
+}
+
+#logIn:hover {
+  background-color: rgb(31, 185, 31);
+}
+
+#logIn:active {
+  background-color: green;
+}
+
+#logIn:after {
+  width: 0;
+}
+
+#logOut {
+  padding: 1px 10px 1px 10px;
+  border-radius: 10px;
+  background: rgb(190, 2, 2);
+  color: white;
+  cursor: pointer;
+}
+
+#logOut:hover {
+  background-color: red;
+}
+
+#logOut:active {
+  background: rgb(190, 2, 2);
+}
+
+#logOut:after {
+  width: 0;
+}
+
+#heading-2 a {
+  color: white;
+  text-decoration: none;
+}
+
+#heading-2 {
+  font-size: calc(0.9rem + 0.5vw);
+  margin: auto;
+  font-style: italic;
+  border-right: 4px solid black;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: type 8s steps(37) infinite, blink 700ms infinite;
+}
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+
+  60% {
+    width: 23em;
+  }
+
+  100% {
+    width: 23em;
+  }
+}
+
+@keyframes blink {
+  from {
+    border-right-color: rgb(255, 255, 255);
+  }
+
+  to {
+    border-right-color: transparent;
+  }
+}
+
+#addNewDiv {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 -20px 0;
+}
+
+.addNewHr {
+  display: inline-block;
+  width: 40%;
+  position: relative;
+  top: calc(0.1rem + 0.4vw);
+  background-color: rgb(255, 255, 255);
+  height: 3px;
+}
+
+#addNewBtn {
+  border-radius: 25px;
+  width: calc(10rem + 3vw);
+  height: calc(2.5rem + 0.5vw);
+  border: none;
+  color: rgb(5, 113, 186);
+  box-shadow: 0 0 5px 1px rgb(64, 102, 118);
+  background-color: white;
+  transition: all 0.25s;
+  font-size: calc(0.8rem + 0.2vw);
+}
+
+#addNewBtn:hover {
+  box-shadow: 0 0 7px 1px rgb(55, 55, 66);
+}
+
+#addNewBtn:active {
+  background-color: rgb(236, 233, 233);
+}
+
+#noResult {
+  color: white;
+  font-size: calc(1rem + 0.5vw);
+  font-style: italic;
+  margin-top: calc(1rem + 1vw);
+  margin-left: calc(1rem + 2vw);
+  display: none;
+}
+
+.cardDiv {
+  border-radius: 5px;
+  min-height: 500px;
+  margin-top: 1.5%;
+  width: 100%;
+}
+
+.thread {
+  transition: all 0.5s;
+  padding: 0.6rem;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  text-align: justify;
+  border-radius: 50px;
+  position: relative;
+  margin-top: calc(2.5rem);
+  /* animation-name: slideSide; */
+  /* animation-duration: 2s; */
+}
+
+.thread small {
+  position: absolute;
+  bottom: calc(1.5rem - 0.5vw);
+  font-size: calc(0.7rem + 0.2vw);
+}
+.anima {
+  animation-name: slideSide;
+  animation-duration: 2s;
+}
+
+@keyframes slideSide {
+  0% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.thread:hover {
+  transform: scale(1.05);
+}
+
+.card-body a {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: calc(0.6rem + 0.4vw);
+}
+
+.card-body a:hover {
+  background-color: rgb(17, 0, 255);
+}
+
+.card-title {
+  font-weight: 600;
+  font-style: italic;
+  font-size: calc(0.9rem + 0.3vw);
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.card-text {
+  font-size: calc(0.7rem + 0.3vw);
+  color: rgb(69, 69, 69);
+}
+
+/* .heart {
+border-radius: 50%;
+border: none;
+border-color: gray;
+background-color: white;
+color: blue;
+position: absolute;
+bottom: 25px;
+left: 30px;
+} */
+
+#goAtTopArrow {
+  color: #1bff41;
+  background-color: rgba(42, 75, 61, 0.534);
+  position: fixed;
+  right: calc(0.5rem + 1vw);
+  bottom: 4rem;
+  border-radius: 50%;
+  width: calc(2rem + 1vw);
+  height: calc(2rem + 1vw);
+  border: none;
+  z-index: 2;
+  visibility: hidden;
+}
+
+#goAtTopArrow:hover {
+  background-color: rgba(0, 0, 0);
+}
+
+#goAtTopArrow:active {
+  background-color: rgba(0, 0, 0, 0.534);
+}
+
+footer {
+  margin-top: 20px;
+  background-color: #033d56;
+  color: white;
+  font-size: calc(0.7rem + 0.3vw);
+}
+
+.footerContent {
+  padding: calc(0.5rem + 1vw) calc(1rem + 5vw) calc(0.5rem + 0.5vw)
+    calc(0.5rem + 1vw);
+  display: flex;
+}
+
+/* .img img{
+  width: calc(1.5rem + 3vw);
+  height: calc(1.5rem + 3vw);
+}
+.img span{
+  font-size: calc(1rem + 1vw);
+  font-style: italic;
+} */
+
+.developer {
+  margin-right: calc(2rem + 5vw);
+}
+.developer li {
+  list-style-type: none;
+  margin-bottom: calc(0.4rem);
+}
+
+li strong {
+  border-bottom: 2.5px solid green;
+  font-style: italic;
+  letter-spacing: 1px;
+  font-size: calc(0.8rem + 0.3vw);
+}
+li a {
+  text-decoration: none;
+  color: white;
+  position: relative;
+}
+
+li a:hover {
+  color: white;
+}
+
+li a:after {
+  transform: scaleX(0);
+  width: 100%;
+  height: 1.5px;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  content: "";
+  transition: transform 0.25s ease-in-out;
+  background-color: rgb(254, 254, 254);
+}
+
+li a:hover:after {
+  transform: scaleX(1);
+}
+
+#copyright {
+  text-align: center;
+  padding: calc(0.1rem + 0.3vw);
+  font-size: calc(0.6rem + 0.3vw);
+  background-color: #1d2b2b;
+}
+
+@media (max-width: 1167px) and (min-width: 450px) {
+  .card-text {
+    font-size: calc(0.9rem + 0.2vw);
+  }
+}
+
+@media (max-width: 991px) {
+  .containerNav {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .containerNav a {
+    text-align: center;
+    border-radius: 10px;
+  }
+  .containerNav a:hover {
+    background-color: rgb(145, 182, 216);
+  }
+  .containerNav a:after {
+    position: relative;
+  }
+}
+
+@media (max-width: 700px) {
+  .footerContent {
+    flex-direction: column;
+    padding: 1px;
+    margin: 0;
+  }
+
+  .img {
+    margin-top: 20px;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .img span {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+
+  .developer {
+    margin-top: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@media (max-width: 590px) {
+  .search {
+    display: none;
+  }
+
+  #search2 {
+    display: block;
+    position: relative;
+    margin-top: 5px;
+    padding: 5px 10px;
+  }
+
+  #search2Inp {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+  }
+
+  #search2Inp:focus {
+    outline: none;
+    border-bottom: 2px solid #0383ec;
+  }
+
+  #search2Inp:focus + #search2Icon {
+    color: #0383ec;
+    bottom: 11px;
+  }
+
+  #search2Icon {
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+  }
+  .conversationTxt {
+    display: none;
+  }
+  .btn {
+    font-size: 0.8rem;
+  }
+  .thread small {
+    left: 20px;
+  }
+  .card-body a {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 375px) {
+  #heading-2 {
+    display: none;
+  }
+  #addNewDiv {
+    margin: 0;
+  }
+  .cardDiv {
+    width: 107%;
+    margin-left: -20px;
+  }
+  .joinTxt {
+    display: none;
+  }
+  .card-body a {
+    border-radius: 15px;
+    font-size: 1.1rem;
+  }
+  .thread {
+    border-radius: 35px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+}

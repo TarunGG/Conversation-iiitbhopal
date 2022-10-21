@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="../css/logo1.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/preLoader.css" type="text/css" />
+    <style>
+      body {
+        background: #3f89c6;
+        color: black;
+        font-family: cursive;
+        /* font-size: 22px; */
+      }
+      .main {
+        margin: auto;
+        border: 1px solid black;
+        width: calc(25rem + 15vw);
+        padding: 1rem calc(1rem + 0.5vw) 0 calc(1rem + 0.5vw);
+        padding-bottom: 4rem;
+        background: white;
+        transition: all 1s;
+        animation: slide 0.5s 1 ease-in;
+        box-shadow: 0 0 5px 1px rgb(71, 71, 71);
+      }
+      @keyframes slide {
+        0% {
+          transform: translateY(-150px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      p {
+        font-size: calc(1.2rem + 0.1vw);
+        margin-bottom: 5px;
+      }
+      label {
+        font-size: calc(1.2rem + 0.1vw);
+      }
+      input[type="tel"] {
+        width: 100%;
+        height: calc(2rem + 0.1vw);
+        margin-top: 5px;
+        background-color: #cee6f9;
+        outline: none;
+        border: none;
+        font-size: calc(0.8rem + 0.4vw);
+        padding-left: 10px;
+      }
+
+      #btn {
+        background-color: #1878c7;
+        float: right;
+        position: relative;
+        top: calc(1rem + 0.1vw);
+        font-size: calc(0.8rem + 0.2vw);
+      }
+
+      #btn:hover {
+        background: #115fa3;
+      }
+
+      #btn:active {
+        background-color: #1878c7;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="preLoader"></div>
+    <div id="mainCode">
+      <div class="main">
+        <p>Verification OTP has been sent to your entered email</p>
+        <form action="" method="post">
+          <label for="otp">Enter OTP : </label>
+          <br />
+          <input type="tel" name="otp" id="otp" maxlength="6" />
+          <br />
+          <button type="submit" class="btn btn-primary shadow-none" id="btn">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+    <script src="../js/preLoader.js"></script>
+  </body>
+</html>

@@ -1,0 +1,116 @@
+body {
+  background-color: #3f89c6;
+  font-family: Merienda;
+  color: black;
+  margin-top: calc(0.5rem + 0.5vw);
+}
+
+#headingHome {
+  text-align: center;
+}
+
+#headingHome h1 {
+  font-size: calc(1.5rem + 1vw);
+  color: white;
+}
+
+#home {
+  color: black;
+  font-size: calc(1.3rem + 1vw);
+  position: absolute;
+  top: calc(0.3rem + 0.3vw);
+  right: calc(0.3rem + 1vw);
+}
+
+.containerDiv {
+  /* min-height: 500px; */
+  width: calc(10rem + 40vw);
+  background: white;
+  min-width: fit-content;
+  z-index: 2;
+  padding: 5px;
+  padding-bottom: calc(0.5rem + 1vw);
+  box-shadow: 0 0 5px 1px rgb(35, 35, 35);
+  /* animation: ani .5s 1 ease-out; */
+  margin-bottom: 10px;
+}
+
+.containerDiv::before {
+  content: "";
+  position: absolute;
+  width: calc(1rem + 1vw);
+  height: calc(1rem + 1vw);
+  margin-top: calc(-0.8rem - 0.3vw);
+  margin-left: calc(1rem + 1vw);
+  background: white;
+  transform: rotate(45deg);
+  z-index: 1;
+}
+
+@keyframes ani {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.img {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: calc(1.5rem - 1vw);
+}
+.img img {
+  margin: 0;
+  padding: 0;
+  width: calc(3rem + 4vw);
+  height: calc(3rem + 4vw);
+}
+
+.img + hr {
+  margin: calc(-1rem + 1vw) calc(0.2rem + 0.8vw) calc(0.5rem + 1vw)
+    calc(0.2rem + 0.8vw);
+}
+
+#insideDiv2 {
+  margin-left: calc(0.5rem + 1vw);
+}
+
+h6 {
+  font-size: calc(0.9rem + 0.2vw);
+}
+.text,
+.num {
+  font-size: calc(0.8rem + 0.2vw);
+  background-color: #3f89c6;
+  color: white;
+  width: fit-content;
+  padding: calc(0.3rem) calc(1rem) calc(0.3rem) calc(1.5rem);
+  border-radius: 5px;
+  z-index: 2;
+  line-break: loose;
+}
+.text::before {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  background-color: #3f89c6;
+  transform: rotate(45deg);
+  margin-top: -0.5rem;
+  margin-left: -1.2rem;
+}
+
+@media (max-width: 500px) {
+  #insideDiv2 {
+    display: flex;
+    flex-direction: column;
+    margin-left: -5px;
+  }
+
+  #noOfConv {
+    margin-top: 16px;
+  }
+}

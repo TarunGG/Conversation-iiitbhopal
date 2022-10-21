@@ -1,0 +1,89 @@
+body {
+  font-family: Merienda;
+  background: #3f89c6;
+  color: white;
+}
+.headingHome {
+  text-align: center;
+  margin-top: calc(.5rem + .5vw);
+  margin-bottom: calc(1.1rem + .5vw);
+}
+.headingHome h1{
+    font-size: calc(.9rem + 1.1vw);
+}
+#home{
+  color: black;
+  font-size: calc(1rem + 1vw);
+  position: absolute;
+  top: calc(.3rem + .5vw);
+  right: calc(.1rem + 1vw);
+}
+
+#mainDiv {
+  background-color: #ffffff;
+  color: black;
+  width: calc(7rem + 60vw);
+  box-shadow: 0 0 10px 1px rgb(26, 26, 26);
+  border-radius: 10px;
+  padding-left: calc(1rem + 1vw);
+  padding-right: calc(1rem + 1vw);
+  padding-top: calc(.5rem + 1vw);
+  padding-bottom: calc(1.1rem + 1vw);
+  margin: auto;
+}
+
+.heading {
+  font-size: calc(.9rem + .5vw);
+  margin-bottom: 2px;
+}
+
+textarea{
+  width: 100%;
+  border-radius: 10px;
+  padding-left: calc(.5rem + .5vw);
+  padding-right: calc(.5rem + .5vw);
+  font-size: calc(.8rem + .5vw);
+  border: 1px solid black;
+  background-color: rgb(226, 245, 253);
+  color: #00709c;
+}
+
+textarea:focus{
+  border: 2px solid #06283D;
+  outline: none;
+}
+#topic {
+  padding-top: .2rem ;
+  padding-bottom: .2rem;
+  height: calc(5rem - 2.5vw);
+}
+
+#description {
+  padding-top: .3rem ;
+  padding-bottom: .3rem;
+  min-height: calc(8rem + 1vw);  
+}
+
+small{
+  font-size: calc(.7rem + .2vw);
+}
+#error{
+  color: red;
+  font-size: calc(.6rem + .5vw);
+  display: none;
+}
+#btn{
+  background: #1878c7;
+  border-radius: 10px;
+  float: right;
+  position: relative;
+  font-size: calc(.7rem + .4vw);
+  bottom: calc(1.8rem + .5vw);
+  margin-top: calc(.5rem + .5vw);
+}
+#btn:hover{
+  background-color: #115fa3;
+}
+#btn:active{
+  background: #1878c7;
+}

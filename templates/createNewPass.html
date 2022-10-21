@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Password | Conversation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="../css/logo1.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/preLoader.css" type="text/css" />
+    <link rel="stylesheet" href="../css/createNewPass.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Merienda"
+    />
+  </head>
+
+  <body>
+    <div id="preLoader"></div>
+    <div id="mainCode">
+      <div id="mainContainer">
+        <div class="alert alert-success" role="alert" id="alert">
+          <strong>OTP </strong>has been send successfully at your registered
+          E-mail
+        </div>
+        <div class="heading">
+          <h1>Set New Password</h1>
+        </div>
+        <div class="container" id="containerDiv">
+          <form action="" onsubmit="return validate()" method="post" id="form">
+            <label for="otp">Enter OTP :</label>
+            <br />
+            <input
+              type="tel"
+              maxlength="6"
+              name="otp"
+              autocomplete="off"
+              class="inp"
+              required
+            />
+            <br />
+            <label for="pass">Enter new password :</label>
+            <br />
+            <input
+              type="password"
+              name="pass"
+              minlength="5"
+              autocomplete="off"
+              class="inp"
+              id="pass"
+              required
+            />
+            <button
+              type="button"
+              onclick="visible(pass,'passBtn')"
+              class="visibleBtn"
+              title="Show"
+              id="passBtn"
+            >
+              <i class="fa-regular fa-eye-slash"></i>
+            </button>
+            <br />
+            <label for="cpass" id="cpassl">Confirm new password :</label>
+            <br />
+            <input
+              type="password"
+              name="cpass"
+              minlength="5"
+              autocomplete="off"
+              class="inp"
+              id="cpass"
+              required
+            />
+            <button
+              type="button"
+              onclick="visible(cpass,'cpassBtn')"
+              class="visibleBtn"
+              title="Show"
+              id="cpassBtn"
+            >
+              <i class="fa-regular fa-eye-slash"></i>
+            </button>
+            <br />
+            <p id="error">Password Not Match</p>
+            <button type="submit" class="btn btn-primary shadow-none" id="btn">
+              Set New Password
+            </button>
+          </form>
+        </div>
+      </div>
+      <div id="thankyouDiv"></div>
+    </div>
+    <script src="../js/preLoader.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/aab988c4f3.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/createNewPass.js"></script>
+  </body>
+</html>

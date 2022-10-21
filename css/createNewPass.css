@@ -1,0 +1,103 @@
+body {
+  font-family: Merienda;
+  background: #3f89c6;
+  color: white;
+}
+.heading {
+  text-align: center;
+  margin-top: calc(.5rem + .5vw);
+  margin-bottom: calc(.5rem + .5vw);
+}
+input[type='text'],
+input[type="password"],
+input[type="tel"] {
+  background-color: #cee6f9;
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: calc(.1vw + 1rem);
+  padding-left: calc(.7rem + .1vw);
+  padding-top: calc(.8rem + 0.3vw);
+  padding-bottom: calc(.9rem + 0.1vw);
+  margin-top: calc(0.2rem + 0.1vw);
+  margin-bottom: calc(0.5rem + 0.1vw);
+  height: calc(1.5rem + .5vw);
+}
+
+input[type='text']:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus {
+  outline: 0.5px solid rgb(68, 104, 118);
+}
+.visibleBtn{
+    background: none;
+    border: none;
+    cursor: pointer;
+    float: right;
+    position: relative;
+    bottom: calc(2rem + .5vw);
+    right: calc(.1rem + .3vw);
+}
+#alert {
+  border-radius: 0;
+  font-size: calc(.5rem + .5vw);
+  padding-top: calc(.5rem + .5vw);
+  padding-bottom: calc(.5rem + .5vw);
+}
+form {
+  background-color: white;
+  color: black;
+  width: calc(17.5rem + 15vw);
+  padding: calc(1rem + 0.5vw);
+  margin: auto;
+  animation: scaleUp 0.5s 1 ease-out;
+}
+
+#error {
+  color: red;
+  visibility: hidden;
+}
+
+#btn {
+  background-color: #1878c7;
+  float: right;
+  position: relative;
+  bottom: calc(2rem + .1vw);
+  font-size: calc(.8rem + .2vw);
+}
+
+#btn:hover {
+  background: #115fa3;
+}
+
+#btn:active {
+  background-color: #1878c7;
+}
+
+#thankyouDiv {
+    font-size: calc(0.8rem + 1vw);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: calc(1rem + 40vh);
+    bottom: calc(1rem + 40vh);
+}
+
+#thankyouDiv span {
+    padding-left: calc(0.1vw + 1rem);
+    padding-right: calc(0.1vw + 1rem);
+    padding-top: calc(0.1vw + 0.5rem);
+    /* padding-bottom: calc(0.1vw + 0.1rem); */
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    animation: scaleUp 0.5s 1 ease-out;
+}
+@keyframes scaleUp {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
