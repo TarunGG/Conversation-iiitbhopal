@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"html/template"
+	"os"
 
 	"net/http"
 
@@ -14,7 +15,7 @@ func init() {
 }
 
 func main() {
-	// port := ":" + os.Getenv("PORT")
+	port := ":" + os.Getenv("PORT")
 	// url := os.Getenv("DATABASE_URL")
 	db, err = sql.Open("mysql", "root:Godslayer12@tcp(127.0.0.1:3306)/demondb?parseTime=true")
 	checkerr(err)
@@ -40,7 +41,7 @@ func main() {
 	http.Handle("/css/", http.StripPrefix("/css/", styles))
 	http.Handle("/js/", http.StripPrefix("/js/", js))
 
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(port, nil)
 }
 
 func faviconHandler(w http.ResponseWriter, r *http.Request) {
