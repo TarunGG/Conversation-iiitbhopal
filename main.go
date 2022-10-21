@@ -11,17 +11,17 @@ import (
 )
 
 func init() {
-	tpl = template.Must(template.ParseGlob("./templates/*.html"))
+	tpl = template.Must(template.ParseGlob("templates/*.html"))
 }
 
 func main() {
-	port := ":" + os.Getenv("PORT")
+
 	// url := os.Getenv("DATABASE_URL")
 	db, err = sql.Open("mysql", "root:Godslayer12@tcp(127.0.0.1:3306)/demondb?parseTime=true")
 	checkerr(err)
 	defer db.Close()
-	styles := http.FileServer(http.Dir("./css"))
-	js := http.FileServer(http.Dir("./js"))
+	styles := http.FileServer(http.Dir("css"))
+	js := http.FileServer(http.Dir("js"))
 
 	http.HandleFunc("/", indexexecute)
 	http.HandleFunc("/create", create)
@@ -41,6 +41,7 @@ func main() {
 	http.Handle("/css/", http.StripPrefix("/css/", styles))
 	http.Handle("/js/", http.StripPrefix("/js/", js))
 
+	port := ":" + os.Getenv("PORT")
 	http.ListenAndServe(port, nil)
 }
 
