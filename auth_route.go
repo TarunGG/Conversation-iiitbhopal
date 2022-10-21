@@ -28,7 +28,7 @@ func loginauth(w http.ResponseWriter, r *http.Request) {
 	fpass := r.FormValue("rp")
 	// fmt.Println(funame)
 	// query for database
-	str := "SELECT UserName,Password FROM users WHERE UserName = " + "'" + funame + "'"
+	str := "SELECT username,password FROM users WHERE username = " + "'" + funame + "'"
 
 	rows, err := db.Query(str)
 	checkerr(err)
@@ -51,14 +51,14 @@ func loginauth(w http.ResponseWriter, r *http.Request) {
 		set_get(w, r)
 		cookie.Value = cookie.Value + funame
 		http.SetCookie(w, cookie)
-		// fmt.Println(cookie.Value)
+
 		usersession[cookie.Value] = funame
 
 		http.Redirect(w, r, "/indexexecute", http.StatusSeeOther)
 
 	} else {
 		passTempt = "true"
-		// fmt.Println(err1)
+
 		http.Redirect(w, r, "/login", http.StatusSeeOther)
 	}
 
@@ -93,7 +93,7 @@ func signup(w http.ResponseWriter, r *http.Request) {
 		user1.Email = r.FormValue("rem")
 		cp := r.FormValue("rcp")
 
-		query := "SELECT UserName FROM users WHERE UserName = " + "'" + user1.UserName + "'"
+		query := "SELECT username FROM users WHERE username = " + "'" + user1.UserName + "'"
 		rows, err := db.Query(query)
 		checkerr(err)
 		var uname string
@@ -109,7 +109,6 @@ func signup(w http.ResponseWriter, r *http.Request) {
 			temp.Email = user1.Email
 		}
 		// fmt.Println(temp, uname, user1.UserName)
-		fmt.Println()
 
 		if user1.Password == cp && !temp.Isusername {
 			sendEmail(user1.Email)
@@ -124,16 +123,15 @@ func signup(w http.ResponseWriter, r *http.Request) {
 
 func verifyemail(w http.ResponseWriter, r *http.Request) {
 
-	// fmt.Println("verify mail")
 	if r.Method == http.MethodPost {
 		rotp := r.FormValue("otp")
-		// fmt.Println(otp, rotp)
+
 		if rotp == otp {
 			encp, err := bcrypt.GenerateFromPassword([]byte(user1.Password), bcrypt.DefaultCost)
 			checkerr(err)
 			// fmt.Println("encrypted password before forget pass: ", string(encp))
 
-			_, err = db.Query("INSERT INTO users (UserName,Name,Email,Password) VALUES (?,?,?,?)", user1.UserName, user1.Name, user1.Email, string(encp))
+			_, err = db.Query("INSERT INTO users(username,name,email,password) VALUES (?,?,?,?)", user1.UserName, user1.Name, user1.Email, string(encp))
 			checkerr(err)
 			set_get(w, r)
 			cookie.Value = cookie.Value + user1.UserName
@@ -154,10 +152,9 @@ func verifyemail(w http.ResponseWriter, r *http.Request) {
 func forgetpass(w http.ResponseWriter, r *http.Request) {
 	Is_user_present := false
 
-	// fmt.Println(uname)
 	if r.Method == http.MethodPost {
 		uname := r.FormValue("uname")
-		query := "SELECT UserName,Email,Password FROM users WHERE UserName = " + "'" + uname + "'"
+		query := "SELECT username,email,password FROM users WHERE username = " + "'" + uname + "'"
 
 		rows, err := db.Query(query)
 		checkerr(err)
@@ -170,12 +167,8 @@ func forgetpass(w http.ResponseWriter, r *http.Request) {
 		}
 		defer rows.Close()
 		if Is_user_present {
-			fmt.Println("user present")
 
 			sendEmail(email)
-
-			fmt.Println("otp sent")
-			fmt.Println(temp)
 
 			url := "/passchange?uname=" + uname
 			http.Redirect(w, r, url, http.StatusSeeOther)
@@ -189,31 +182,30 @@ func forgetpass(w http.ResponseWriter, r *http.Request) {
 func passchange(w http.ResponseWriter, r *http.Request) {
 	m, err := url.ParseQuery(r.URL.RawQuery) // parsing the url.
 	uname := m["uname"][0]                   // getting username from url
-	// fmt.Println(uname)
+
 	checkerr(err)
 	if r.Method == http.MethodPost {
 		rotp := r.FormValue("otp")
 		np := r.FormValue("pass")
 		ncp := r.FormValue("cpass")
 		fmt.Println(ncp)
-		// fmt.Println(otp, rotp)
+
 		if rotp == otp {
 
-			// fmt.Println(np, ncp)
 			if np == ncp {
 				encp, err := bcrypt.GenerateFromPassword([]byte(np), bcrypt.DefaultCost)
 				checkerr(err)
-				fmt.Println("encrypted password after forget pass", ncp)
-				_, err = db.Query("UPDATE users SET Password = ? WHERE UserName = ?", string(encp), uname)
+
+				_, err = db.Query("UPDATE users SET password = ? WHERE username = ?", string(encp), uname)
 
 				checkerr(err)
 				http.Redirect(w, r, "/login", http.StatusSeeOther)
-				// fmt.Println("password changed")
+
 				return
 			}
 		} else {
 			http.Redirect(w, r, "/signup", http.StatusSeeOther)
-			// fmt.Println("password not changed")
+
 			return
 		}
 	}

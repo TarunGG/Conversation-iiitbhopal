@@ -40,13 +40,11 @@ func create(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/login", http.StatusSeeOther)
 	}
 
-	// fmt.Println("create_thread0")
-
 	err = tpl.ExecuteTemplate(w, "create_thread.html", nil)
 	checkerr(err)
-	// fmt.Println("create_thread10")
+
 	create_thread(w, r)
-	// fmt.Println("create_thread11")
+
 }
 
 func feedback(w http.ResponseWriter, r *http.Request) {

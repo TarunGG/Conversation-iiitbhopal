@@ -13,8 +13,6 @@ func create_thread(w http.ResponseWriter, r *http.Request) {
 	var thread_ *thread
 	if r.Method == http.MethodPost {
 
-		// // fmt.Println("create_thread1")
-
 		topic := r.FormValue("topic")
 		content := r.FormValue("content")
 		id := uuid.New()
@@ -22,22 +20,20 @@ func create_thread(w http.ResponseWriter, r *http.Request) {
 		split := strings.Split(cookie.Value, "|")
 		fmt.Println(cookie.Value, split)
 
-		// fmt.Println("create_thread2")
-
 		thread_ = &thread{
 			Id:       id,
 			UserName: split[1],
 			Topic:    topic,
 			Content:  content,
 		}
-		// fmt.Println("create_thread3")
+
 		create_time := thread_.Created_time()
-		query := "INSERT INTO thread (Id, UserName, Topic, Content, CreatedAt) VALUES (?, ?, ?, ?, ?)"
+		query := "INSERT INTO thread (id, username, topic, content, created_at) VALUES (?, ?, ?, ?, ?)"
 		_, err := db.Exec(query, thread_.Id, thread_.UserName, thread_.Topic, thread_.Content, create_time)
 		checkerr(err)
-		// fmt.Println("create_thread4")
+
 		http.Redirect(w, r, "/", http.StatusSeeOther)
-		// fmt.Println("create_thread5")
+
 		return
 	}
 }
@@ -66,7 +62,7 @@ func read_thread(w http.ResponseWriter, r *http.Request) {
 	var b both
 
 	// getting the thread information
-	query := "SELECT * FROM thread WHERE UserName=" + "'" + m["UserName"][0] + "'" + " AND " + "Id=" + "'" + m["Id"][0] + "'"
+	query := "SELECT * FROM thread WHERE username=" + "'" + m["UserName"][0] + "'" + " AND " + "Id=" + "'" + m["Id"][0] + "'"
 	rows, err := db.Query(query)
 	checkerr(err)
 	for rows.Next() {
@@ -74,7 +70,7 @@ func read_thread(w http.ResponseWriter, r *http.Request) {
 		checkerr(err)
 	}
 	// getting the post information
-	query = "SELECT * FROM post WHERE ThreadUserName=" + "'" + m["UserName"][0] + "'" + " AND " + "Id=" + "'" + m["Id"][0] + "'"
+	query = "SELECT * FROM post WHERE thread_user_name=" + "'" + m["UserName"][0] + "'" + " AND " + "Id=" + "'" + m["Id"][0] + "'"
 	rows, err = db.Query(query)
 	checkerr(err)
 	for rows.Next() {
@@ -95,7 +91,7 @@ func read_thread(w http.ResponseWriter, r *http.Request) {
 		set_get(w, r)
 		split := strings.Split(cookie.Value, "|")
 
-		query := "INSERT INTO post (ThreadUserName, Id, PostUserName, Content, PostId) VALUES (?, ?, ?, ?, ?)"
+		query := "INSERT INTO post (thread_user_name, thread_id, post_user_name, Content, post_id) VALUES (?, ?, ?, ?, ?)"
 		_, err := db.Exec(query, m["UserName"][0], m["Id"][0], split[1], rep, id)
 		checkerr(err)
 
