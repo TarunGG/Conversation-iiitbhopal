@@ -7,7 +7,7 @@ import (
 
 	"net/http"
 
-	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/lib/pq"
 )
 
 func init() {
@@ -16,8 +16,8 @@ func init() {
 
 func main() {
 
-	// url := os.Getenv("DATABASE_URL")
-	db, err = sql.Open("mysql", "root:Godslayer12@tcp(127.0.0.1:3306)/demondb?parseTime=true")
+	url := os.Getenv("DATABASE_URL")
+	db, err = sql.Open("postgres", url)
 	checkerr(err)
 	defer db.Close()
 	styles := http.FileServer(http.Dir("css"))

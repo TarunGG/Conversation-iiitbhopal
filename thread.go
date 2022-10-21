@@ -32,7 +32,7 @@ func create_thread(w http.ResponseWriter, r *http.Request) {
 		}
 		// fmt.Println("create_thread3")
 		create_time := thread_.Created_time()
-		query := "INSERT INTO demondb.thread (Id, UserName, Topic, Content, CreatedAt) VALUES (?, ?, ?, ?, ?)"
+		query := "INSERT INTO thread (Id, UserName, Topic, Content, CreatedAt) VALUES (?, ?, ?, ?, ?)"
 		_, err := db.Exec(query, thread_.Id, thread_.UserName, thread_.Topic, thread_.Content, create_time)
 		checkerr(err)
 		// fmt.Println("create_thread4")
@@ -46,7 +46,7 @@ func create_thread(w http.ResponseWriter, r *http.Request) {
 // getting threads from database.
 func show_thread() {
 	threads = nil
-	query := "SELECT * FROM demondb.thread"
+	query := "SELECT * FROM thread"
 	rows, err := db.Query(query)
 	checkerr(err)
 	defer rows.Close()
@@ -66,7 +66,7 @@ func read_thread(w http.ResponseWriter, r *http.Request) {
 	var b both
 
 	// getting the thread information
-	query := "SELECT * FROM demondb.thread WHERE UserName=" + "'" + m["UserName"][0] + "'" + " AND " + "Id=" + "'" + m["Id"][0] + "'"
+	query := "SELECT * FROM thread WHERE UserName=" + "'" + m["UserName"][0] + "'" + " AND " + "Id=" + "'" + m["Id"][0] + "'"
 	rows, err := db.Query(query)
 	checkerr(err)
 	for rows.Next() {
@@ -74,7 +74,7 @@ func read_thread(w http.ResponseWriter, r *http.Request) {
 		checkerr(err)
 	}
 	// getting the post information
-	query = "SELECT * FROM demondb.post WHERE ThreadUserName=" + "'" + m["UserName"][0] + "'" + " AND " + "Id=" + "'" + m["Id"][0] + "'"
+	query = "SELECT * FROM post WHERE ThreadUserName=" + "'" + m["UserName"][0] + "'" + " AND " + "Id=" + "'" + m["Id"][0] + "'"
 	rows, err = db.Query(query)
 	checkerr(err)
 	for rows.Next() {
@@ -95,7 +95,7 @@ func read_thread(w http.ResponseWriter, r *http.Request) {
 		set_get(w, r)
 		split := strings.Split(cookie.Value, "|")
 
-		query := "INSERT INTO demondb.post (ThreadUserName, Id, PostUserName, Content, PostId) VALUES (?, ?, ?, ?, ?)"
+		query := "INSERT INTO post (ThreadUserName, Id, PostUserName, Content, PostId) VALUES (?, ?, ?, ?, ?)"
 		_, err := db.Exec(query, m["UserName"][0], m["Id"][0], split[1], rep, id)
 		checkerr(err)
 

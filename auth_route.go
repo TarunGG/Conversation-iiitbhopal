@@ -28,7 +28,7 @@ func loginauth(w http.ResponseWriter, r *http.Request) {
 	fpass := r.FormValue("rp")
 	// fmt.Println(funame)
 	// query for database
-	str := "SELECT UserName,Password FROM demondb.users WHERE UserName = " + "'" + funame + "'"
+	str := "SELECT UserName,Password FROM users WHERE UserName = " + "'" + funame + "'"
 
 	rows, err := db.Query(str)
 	checkerr(err)
@@ -93,7 +93,7 @@ func signup(w http.ResponseWriter, r *http.Request) {
 		user1.Email = r.FormValue("rem")
 		cp := r.FormValue("rcp")
 
-		query := "SELECT UserName FROM demondb.users WHERE UserName = " + "'" + user1.UserName + "'"
+		query := "SELECT UserName FROM users WHERE UserName = " + "'" + user1.UserName + "'"
 		rows, err := db.Query(query)
 		checkerr(err)
 		var uname string
@@ -157,7 +157,7 @@ func forgetpass(w http.ResponseWriter, r *http.Request) {
 	// fmt.Println(uname)
 	if r.Method == http.MethodPost {
 		uname := r.FormValue("uname")
-		query := "SELECT UserName,Email,Password FROM demondb.users WHERE UserName = " + "'" + uname + "'"
+		query := "SELECT UserName,Email,Password FROM users WHERE UserName = " + "'" + uname + "'"
 
 		rows, err := db.Query(query)
 		checkerr(err)
