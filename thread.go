@@ -39,7 +39,7 @@ func create_thread(w http.ResponseWriter, r *http.Request) {
 			checkerr(err)
 		}
 		No_of_threads++
-		query = "UPDATE users SET no_of_threads=" + strconv.Itoa(No_of_threads) + "WHERE username=" + "'" + split[1] + "'"
+		query = "UPDATE users SET no_of_threads=" + strconv.Itoa(No_of_threads) + " WHERE username=" + "'" + split[1] + "'"
 		_, err = db.Query(query)
 		checkerr(err)
 

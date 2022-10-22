@@ -104,11 +104,11 @@ func sendEmail(email string) {
 }
 
 func (thread *thread) Created_time() string {
-	return time.Now().Format("02-Jan-2006 15:04:05")
+	return time.Now().Format("02-Jan-2006")
 }
 
 func (post *post) Created_time() string {
-	return time.Now().Format("02-Jan-2006 15:04:05")
+	return time.Now().Format("02-Jan-2006")
 }
 
 // func generatetemplate(files []string) *template.Template {
