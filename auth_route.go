@@ -116,8 +116,10 @@ func verifyemail(w http.ResponseWriter, r *http.Request) {
 			encp, err := bcrypt.GenerateFromPassword([]byte(user1.Password), bcrypt.DefaultCost)
 			checkerr(err)
 			// fmt.Println("encrypted password before forget pass: ", string(encp))
+			query := "INSERT INTO users (username,password,name,email) VALUES(" + "'" + user1.UserName + "'" + "," + "'" + string(encp) + "'" + "," + "'" + user1.Name + "'" + "," + "'" + user1.Email + "'" + ")"
 
-			_, err = db.Query("INSERT INTO users(username,name,email,password) VALUES('?','?','?','?')", user1.UserName, user1.Name, user1.Email, string(encp))
+			// _, err = db.Query("INSERT INTO users(username,name,email,password) VALUES('?','?','?','?')", user1.UserName, user1.Name, user1.Email, string(encp))
+			_, err = db.Exec(query)
 			checkerr(err)
 			set_get(w, r)
 			cookie.Value = cookie.Value + user1.UserName
