@@ -117,7 +117,7 @@ func verifyemail(w http.ResponseWriter, r *http.Request) {
 			checkerr(err)
 			// fmt.Println("encrypted password before forget pass: ", string(encp))
 
-			_, err = db.Query("INSERT INTO users(username,name,email,password) VALUES ('?','?','?','?')", user1.UserName, user1.Name, user1.Email, string(encp))
+			_, err = db.Query("INSERT INTO users(username,name,email,password) VALUES('?','?','?','?')", user1.UserName, user1.Name, user1.Email, string(encp))
 			checkerr(err)
 			set_get(w, r)
 			cookie.Value = cookie.Value + user1.UserName
