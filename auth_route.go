@@ -14,19 +14,13 @@ import (
 
 func loginauth(w http.ResponseWriter, r *http.Request) {
 
-	// IsPassWrong = "false"
-	// passTempt := "false"
-	// variables from database
-	// fmt.Println("login auth")
 	var uname string
 	var pass string
 	// parsing form variables
-	// var fpass string
-	// var funame string
 
 	funame := r.FormValue("rUname")
 	fpass := r.FormValue("rp")
-	// fmt.Println(funame)
+
 	// query for database
 	str := "SELECT username,password FROM users WHERE username = " + "'" + funame + "'"
 
@@ -61,13 +55,6 @@ func loginauth(w http.ResponseWriter, r *http.Request) {
 
 		http.Redirect(w, r, "/login", http.StatusSeeOther)
 	}
-
-	// if Requestcookie(r) {
-	// 	http.Redirect(w, r, "/indexexecute", http.StatusSeeOther)
-	// } else {
-	// 	err := tpl.ExecuteTemplate(w, "login.html", IsPassWrong)
-	// 	checkerr(err)
-	// }
 
 }
 
@@ -108,7 +95,6 @@ func signup(w http.ResponseWriter, r *http.Request) {
 			temp.Name = user1.Name
 			temp.Email = user1.Email
 		}
-		// fmt.Println(temp, uname, user1.UserName)
 
 		if user1.Password == cp && !temp.Isusername {
 			sendEmail(user1.Email)
@@ -131,7 +117,7 @@ func verifyemail(w http.ResponseWriter, r *http.Request) {
 			checkerr(err)
 			// fmt.Println("encrypted password before forget pass: ", string(encp))
 
-			_, err = db.Query("INSERT INTO users(username,name,email,password) VALUES (?,?,?,?)", user1.UserName, user1.Name, user1.Email, string(encp))
+			_, err = db.Query("INSERT INTO users(username,name,email,password) VALUES ('?','?','?','?')", user1.UserName, user1.Name, user1.Email, string(encp))
 			checkerr(err)
 			set_get(w, r)
 			cookie.Value = cookie.Value + user1.UserName

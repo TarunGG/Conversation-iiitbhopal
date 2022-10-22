@@ -521,4 +521,7 @@ li a:hover:after {
     margin-bottom: 10px;
     margin-top: 10px;
   }
+  #noResult {
+    margin-top: calc(1rem + 0.1vw);
+  }
 }

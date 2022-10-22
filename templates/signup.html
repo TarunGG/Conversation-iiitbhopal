@@ -13,23 +13,7 @@
     />
     <title>Sign Up | Conversation</title>
   </head>
-  <body onload="checkExistUser(user,userl)">
-    <script>
-      function checkExistUser(user, userl) {
-        let userNameExist = "{{.Isusername}}";
-        let userErrorMsg = document.getElementById("userErrorMsg");
-        if (userNameExist == "true") {
-          user.style["border-bottom"] = "2px solid red";
-          userl.style.color = "red";
-          userErrorMsg.style.display = "block";
-          setTimeout(function () {
-            userErrorMsg.style.display = "none";
-            user.style["border-bottom"] = "1px solid black";
-            userl.style.color = "black";
-          }, 4000);
-        }
-      }
-    </script>
+  <body>
     <div id="preLoader"></div>
     <div id="mainCode">
       <div id="headingHome">

@@ -28,7 +28,7 @@ func create_thread(w http.ResponseWriter, r *http.Request) {
 		}
 
 		create_time := thread_.Created_time()
-		query := "INSERT INTO thread (id, username, topic, content, created_at) VALUES (?, ?, ?, ?, ?)"
+		query := "INSERT INTO thread(id, username, topic, content, created_at) VALUES (?, ?, ?, ?, ?)"
 		_, err := db.Exec(query, thread_.Id, thread_.UserName, thread_.Topic, thread_.Content, create_time)
 		checkerr(err)
 
@@ -91,7 +91,7 @@ func read_thread(w http.ResponseWriter, r *http.Request) {
 		set_get(w, r)
 		split := strings.Split(cookie.Value, "|")
 
-		query := "INSERT INTO post (thread_user_name, thread_id, post_user_name, Content, post_id) VALUES (?, ?, ?, ?, ?)"
+		query := "INSERT INTO post(thread_user_name, thread_id, post_user_name, Content, post_id) VALUES(?, ?, ?, ?, ?)"
 		_, err := db.Exec(query, m["UserName"][0], m["Id"][0], split[1], rep, id)
 		checkerr(err)
 
