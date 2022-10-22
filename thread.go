@@ -31,7 +31,7 @@ func create_thread(w http.ResponseWriter, r *http.Request) {
 		// updating number of threads made by user.
 		var No_of_threads int
 
-		query := "SELECT no_of_threads FROM user WHERE username=" + "'" + split[1] + "'"
+		query := "SELECT no_of_threads FROM users WHERE username=" + "'" + split[1] + "'"
 		rows, err := db.Query(query)
 		checkerr(err)
 		for rows.Next() {
@@ -39,13 +39,13 @@ func create_thread(w http.ResponseWriter, r *http.Request) {
 			checkerr(err)
 		}
 		No_of_threads++
-		query = "UPDATE user SET no_of_threads=" + strconv.Itoa(No_of_threads) + "WHERE username=" + "'" + split[1] + "'"
+		query = "UPDATE users SET no_of_threads=" + strconv.Itoa(No_of_threads) + "WHERE username=" + "'" + split[1] + "'"
 		_, err = db.Query(query)
 		checkerr(err)
 
 		create_time := thread_.Created_time()
-		query = "INSERT INTO thread(id, username, topic, content, created_at) VALUES (?, ?, ?, ?, ?)"
-		_, err = db.Exec(query, thread_.Id, thread_.UserName, thread_.Topic, thread_.Content, create_time)
+		query = "INSERT INTO thread(id, username, topic, content, created_at) VALUES (" + "'" + id.String() + "'" + "," + "'" + split[1] + "'" + "," + "'" + topic + "'" + "," + "'" + content + "'" + "," + "'" + create_time + "'" + ")"
+		_, err = db.Exec(query)
 		checkerr(err)
 
 		http.Redirect(w, r, "/", http.StatusSeeOther)
@@ -109,7 +109,7 @@ func read_thread(w http.ResponseWriter, r *http.Request) {
 
 		// updating number of posts made by user.
 		var No_of_posts int
-		query := "SELECT no_of_posts FROM user WHERE username=" + "'" + split[1] + "'"
+		query := "SELECT no_of_posts FROM users WHERE username=" + "'" + split[1] + "'"
 		rows, err := db.Query(query)
 		checkerr(err)
 		for rows.Next() {
@@ -117,13 +117,13 @@ func read_thread(w http.ResponseWriter, r *http.Request) {
 			checkerr(err)
 		}
 		No_of_posts++
-		query = "UPDATE user SET no_of_posts=" + strconv.Itoa(No_of_posts) + "WHERE username=" + "'" + split[1] + "'"
+		query = "UPDATE users SET no_of_posts=" + strconv.Itoa(No_of_posts) + "WHERE username=" + "'" + split[1] + "'"
 		_, err = db.Query(query)
 		checkerr(err)
 
 		// inserting reply into database.
-		query = "INSERT INTO post(thread_user_name, thread_id, post_user_name, Content, post_id) VALUES(?, ?, ?, ?, ?)"
-		_, err = db.Exec(query, m["UserName"][0], m["Id"][0], split[1], rep, id)
+		query = "INSERT INTO post(thread_user_name, thread_id, post_user_name, Content, post_id) VALUES(" + "'" + m["UserName"][0] + "'" + "," + "'" + m["Id"][0] + "'" + "," + "'" + split[1] + "'" + "," + "'" + rep + "'" + "," + "'" + id.String() + "'" + ")"
+		_, err = db.Exec(query)
 		checkerr(err)
 
 	}
