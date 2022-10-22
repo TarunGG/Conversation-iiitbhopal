@@ -1,90 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Verification | Conversation</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda" />
-    <link rel="shortcut icon" href="../logoImg/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/preLoader.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Merienda"
+    />
+    <link rel="shortcut icon" href="../css/logo1.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/preLoader.css" />
     <style>
-        body {
-            font-family: Merienda;
-            background: #3f89c6;
-            /* color: white; */
-            font-size: calc(.8rem + .2vw);
+      body {
+        font-family: Merienda;
+        background: #3f89c6;
+        /* color: white; */
+        font-size: calc(0.8rem + 0.2vw);
+      }
+
+      #formDiv {
+        background: white;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        border: 2px solid black;
+        border-top: none;
+        width: calc(16rem + 15vw);
+        padding: calc(0.5rem + 0.5vw);
+        padding-bottom: calc(0.8rem + 0.5vw);
+        animation: slide 0.5s 1 ease-out;
+      }
+
+      @keyframes slide {
+        0% {
+          transform: translateY(-150px);
         }
 
-        #formDiv {
-            background: white;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            border: 2px solid black;
-            border-top: none;
-            width: calc(16rem + 15vw);
-            padding: calc(.5rem + .5vw);
-            padding-bottom: calc(.8rem + .5vw);
-            animation: slide .5s 1 ease-out;
+        100% {
+          transform: translateY(0px);
         }
+      }
 
-        @keyframes slide {
-            0% {
-                transform: translateY(-150px);
-            }
+      input {
+        background-color: #cee6f9;
+        outline: none;
+        border: none;
+        color: #193e5d;
+        padding: 0.2rem 0.4rem;
+        width: 100%;
+      }
 
-            100% {
-                transform: translateY(0px);
-            }
-        }
+      #btn {
+        font-size: calc(0.7rem + 0.3vw);
+        padding: 0.2rem;
+        width: calc(4rem + 2vw);
+        background-color: #1878c7;
+        float: right;
+        position: relative;
+        top: 0.5rem;
+      }
 
-        input {
-            background-color: #cee6f9;
-            outline: none;
-            border: none;
-            color: #193e5d;
-            padding: .2rem .4rem;
-            width: 100%;
-        }
+      #btn:hover {
+        background: #115fa3;
+      }
 
-        #btn {
-            font-size: calc(.7rem + .3vw);
-            padding: .2rem;
-            width: calc(4rem + 2vw);
-            background-color: #1878c7;
-            float: right;
-            position: relative;
-            top: .5rem;
-        }
-
-        #btn:hover {
-            background: #115fa3;
-        }
-
-        #btn:active {
-            background-color: #1878c7;
-        }
+      #btn:active {
+        background-color: #1878c7;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="preLoader"></div>
     <div id="mainCode">
-    <div class="container" id="formDiv">
+      <div class="container" id="formDiv">
         <p>OTP has been sent to your entered email</p>
-        <form action="">
-            <label for="otp">Enter OTP :</label>
-            <input type="tel" name="otp" id="otpInp" maxlength="6" required>
-            <br>
-            <button type="submit" class="btn btn-primary" id="btn">Submit</button>
+        <form action="" method="post">
+          <label for="otp">Enter OTP :</label>
+          <input type="tel" name="otp" id="otpInp" maxlength="6" required />
+          <br />
+          <button type="submit" class="btn btn-primary" id="btn">Submit</button>
         </form>
+      </div>
     </div>
-</div>
-<script src="../js/preLoader.js"></script>
-</body>
-
+    <script src="../js/preLoader.js"></script>
+  </body>
 </html>
