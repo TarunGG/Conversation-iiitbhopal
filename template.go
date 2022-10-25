@@ -35,18 +35,6 @@ func indexexecute(w http.ResponseWriter, r *http.Request) {
 	checkerr(err)
 }
 
-func create(w http.ResponseWriter, r *http.Request) {
-	if !Requestcookie(r) {
-		http.Redirect(w, r, "/login", http.StatusSeeOther)
-	}
-
-	err = tpl.ExecuteTemplate(w, "create_thread.html", nil)
-	checkerr(err)
-
-	create_thread(w, r)
-
-}
-
 func feedback(w http.ResponseWriter, r *http.Request) {
 	if !Requestcookie(r) {
 		http.Redirect(w, r, "/login", http.StatusSeeOther)

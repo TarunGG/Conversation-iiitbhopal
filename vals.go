@@ -67,3 +67,13 @@ type Profile struct {
 	NoPost   int32
 	NoThread int32
 }
+
+type page_thread struct {
+	Id        uuid.UUID // id of specific thread
+	UserName  string    // username of the user who created the thread
+	Topic     string    // topic of the thread
+	Content   string    // content of the thread
+	CreatedAt string
+}
+
+var page_threads []page_thread

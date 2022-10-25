@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -10,16 +9,24 @@ import (
 	"github.com/google/uuid"
 )
 
-func create_thread(w http.ResponseWriter, r *http.Request) {
-	var thread_ *thread
+func create(w http.ResponseWriter, r *http.Request) {
+
+	if !Requestcookie(r) {
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
+	}
+
 	if r.Method == http.MethodPost {
 
+		// // fmt.Println("create_thread1")
+		var thread_ *thread
 		topic := r.FormValue("topic")
 		content := r.FormValue("content")
 		id := uuid.New()
 		set_get(w, r)
 		split := strings.Split(cookie.Value, "|")
-		fmt.Println(cookie.Value, split)
+		// fmt.Println(cookie.Value, split)
+
+		// fmt.Println("create_thread2")
 
 		thread_ = &thread{
 			Id:       id,
@@ -27,47 +34,42 @@ func create_thread(w http.ResponseWriter, r *http.Request) {
 			Topic:    topic,
 			Content:  content,
 		}
-
-		// updating number of threads made by user.
-		var No_of_threads int
-
-		query := "SELECT no_of_threads FROM users WHERE username=" + "'" + split[1] + "'"
-		rows, err := db.Query(query)
-		checkerr(err)
-		for rows.Next() {
-			err := rows.Scan(&No_of_threads)
-			checkerr(err)
-		}
-		No_of_threads++
-		query = "UPDATE users SET no_of_threads=" + strconv.Itoa(No_of_threads) + " WHERE username=" + "'" + split[1] + "'"
-		_, err = db.Query(query)
-		checkerr(err)
-
+		// fmt.Println("create_thread3")
 		create_time := thread_.Created_time()
-		query = "INSERT INTO thread(id, username, topic, content, created_at) VALUES (" + "'" + id.String() + "'" + "," + "'" + split[1] + "'" + "," + "'" + topic + "'" + "," + "'" + content + "'" + "," + "'" + create_time + "'" + ")"
-		_, err = db.Exec(query)
+		// fmt.Println(create_time)
+		query := "INSERT INTO thread(id, username, topic, content, created_at) VALUES (" + "'" + id.String() + "'" + "," + "'" + split[1] + "'" + "," + "'" + topic + "'" + "," + "'" + content + "'" + "," + "'" + create_time + "'" + ")"
+		_, err := db.Exec(query)
+
 		checkerr(err)
-
+		// fmt.Println("create_thread4")
 		http.Redirect(w, r, "/", http.StatusSeeOther)
-
+		// fmt.Println("create_thread5")
 		return
 	}
+
+	err = tpl.ExecuteTemplate(w, "create_thread.html", nil)
+
 }
 
 // for main page rendering threads
 // getting threads from database.
 func show_thread() {
-	threads = nil
+	page_threads = nil
 	query := "SELECT * FROM thread"
 	rows, err := db.Query(query)
 	checkerr(err)
 	defer rows.Close()
+	var thread_ page_thread
 	for rows.Next() {
-		var thread_ thread
-		err := rows.Scan(&thread_.Id, &thread_.UserName, &thread_.Topic, &thread_.Content, &thread_.CreatedAt)
+		var tempt string
+		err := rows.Scan(&thread_.Id, &thread_.UserName, &tempt, &thread_.Content, &thread_.Topic)
 		checkerr(err)
-		threads = append(threads, thread_)
+		temp := strings.Split(tempt, " ")
+		thread_.CreatedAt = temp[0]
+		// fmt.Println(thread_.CreatedAt)
+		page_threads = append(page_threads, thread_)
 	}
+	// fmt.Println(page_threads)
 }
 
 func read_thread(w http.ResponseWriter, r *http.Request) {
@@ -86,7 +88,7 @@ func read_thread(w http.ResponseWriter, r *http.Request) {
 		checkerr(err)
 	}
 	// getting the post information
-	query = "SELECT * FROM post WHERE thread_user_name=" + "'" + m["UserName"][0] + "'" + " AND " + "Id=" + "'" + m["Id"][0] + "'"
+	query = "SELECT * FROM post WHERE thread_user_name=" + "'" + m["UserName"][0] + "'" + " AND " + "id=" + "'" + m["Id"][0] + "'"
 	rows, err = db.Query(query)
 	checkerr(err)
 	for rows.Next() {
