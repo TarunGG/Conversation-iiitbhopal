@@ -3,7 +3,6 @@ package main
 import (
 	"net/http"
 	"net/url"
-	"strconv"
 	"strings"
 
 	"github.com/google/uuid"
@@ -75,28 +74,33 @@ func show_thread() {
 func read_thread(w http.ResponseWriter, r *http.Request) {
 
 	var post post
+	// thread_id and thread_user_name
 	m, err := url.ParseQuery(r.URL.RawQuery)
 	checkerr(err)
 	var b both
 
 	// getting the thread information
-	query := "SELECT * FROM thread WHERE username=" + "'" + m["UserName"][0] + "'" + " AND " + "Id=" + "'" + m["Id"][0] + "'"
-	rows, err := db.Query(query)
+	thread_query := "SELECT * FROM thread WHERE username=" + "'" + m["UserName"][0] + "'" + " AND " + "id=" + "'" + m["Id"][0] + "'"
+	thread_rows, err := db.Query(thread_query)
 	checkerr(err)
-	for rows.Next() {
-		err := rows.Scan(&b.Thread.Id, &b.Thread.UserName, &b.Thread.Topic, &b.Thread.Content, &b.Thread.CreatedAt)
+	defer thread_rows.Close()
+	for thread_rows.Next() {
+		err := thread_rows.Scan(&b.Thread.Id, &b.Thread.UserName, &b.Thread.Topic, &b.Thread.Content, &b.Thread.CreatedAt)
+		// fmt.Println(b.Thread.UserName)
 		checkerr(err)
 	}
+
 	// getting the post information
-	query = "SELECT * FROM post WHERE thread_user_name=" + "'" + m["UserName"][0] + "'" + " AND " + "id=" + "'" + m["Id"][0] + "'"
-	rows, err = db.Query(query)
+	post_query := "SELECT * FROM post WHERE thread_user_name=" + "'" + m["UserName"][0] + "'" + " AND " + "thread_id=" + "'" + m["Id"][0] + "'"
+	post_rows, err := db.Query(post_query)
 	checkerr(err)
-	for rows.Next() {
-		err := rows.Scan(&post.Thread_username, &post.Thread_Id, &post.UserName, &post.Content, &post.Id)
+	defer post_rows.Close()
+	for post_rows.Next() {
+		err := post_rows.Scan(&post.Id, &post.Thread_Id, &post.Thread_username, &post.UserName, &post.Content)
 		checkerr(err)
 		b.Post = append(b.Post, post)
 	}
-	defer rows.Close()
+
 	if !Requestcookie(r) {
 		http.Redirect(w, r, "/login", http.StatusSeeOther)
 		return
@@ -109,23 +113,8 @@ func read_thread(w http.ResponseWriter, r *http.Request) {
 		set_get(w, r)
 		split := strings.Split(cookie.Value, "|")
 
-		// updating number of posts made by user.
-		var No_of_posts int
-		query := "SELECT no_of_posts FROM users WHERE username=" + "'" + split[1] + "'"
-		rows, err := db.Query(query)
-		checkerr(err)
-		for rows.Next() {
-			err := rows.Scan(&No_of_posts)
-			checkerr(err)
-		}
-		No_of_posts++
-		query = "UPDATE users SET no_of_posts=" + strconv.Itoa(No_of_posts) + "WHERE username=" + "'" + split[1] + "'"
-		_, err = db.Query(query)
-		checkerr(err)
-
-		// inserting reply into database.
-		query = "INSERT INTO post(thread_user_name, thread_id, post_user_name, Content, post_id) VALUES(" + "'" + m["UserName"][0] + "'" + "," + "'" + m["Id"][0] + "'" + "," + "'" + split[1] + "'" + "," + "'" + rep + "'" + "," + "'" + id.String() + "'" + ")"
-		_, err = db.Exec(query)
+		query := "INSERT INTO post(thread_user_name, thread_id, post_user_name, content, post_id) VALUES(" + "'" + m["UserName"][0] + "'" + "," + "'" + m["Id"][0] + "'" + "," + "'" + split[1] + "'" + "," + "'" + rep + "'" + "," + "'" + id.String() + "'" + ")"
+		_, err := db.Exec(query)
 		checkerr(err)
 
 	}
