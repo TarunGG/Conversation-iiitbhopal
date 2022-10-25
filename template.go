@@ -27,9 +27,9 @@ func indexexecute(w http.ResponseWriter, r *http.Request) {
 	show_thread()
 
 	if Requestcookie(r) {
-		err = tpl.ExecuteTemplate(w, "logged_index.html", threads)
+		err = tpl.ExecuteTemplate(w, "logged_index.html", page_threads)
 	} else {
-		err = tpl.ExecuteTemplate(w, "not_logged_index.html", threads)
+		err = tpl.ExecuteTemplate(w, "not_logged_index.html", page_threads)
 	}
 
 	checkerr(err)

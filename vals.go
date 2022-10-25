@@ -27,8 +27,6 @@ type thread struct {
 	CreatedAt time.Time // time when the thread was created
 }
 
-var threads []thread
-
 type post struct {
 	Thread_username string    // username of the user who created the thread
 	Content         string    // content of the post / reply.
