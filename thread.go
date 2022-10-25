@@ -62,7 +62,7 @@ func show_thread() {
 	var thread_ page_thread
 	for rows.Next() {
 		var tempt string
-		err := rows.Scan(&thread_.Id, &thread_.UserName, &tempt, &thread_.Content, &thread_.Topic)
+		err := rows.Scan(&thread_.Id, &thread_.UserName, &thread_.Topic, &thread_.Content, &tempt)
 		checkerr(err)
 		temp := strings.Split(tempt, " ")
 		thread_.CreatedAt = temp[0]
