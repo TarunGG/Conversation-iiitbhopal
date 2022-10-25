@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 	"net/url"
+	"strconv"
 	"strings"
 
 	"github.com/google/uuid"
@@ -38,6 +39,22 @@ func create(w http.ResponseWriter, r *http.Request) {
 		// fmt.Println(create_time)
 		query := "INSERT INTO thread(id, username, topic, content, created_at) VALUES (" + "'" + id.String() + "'" + "," + "'" + split[1] + "'" + "," + "'" + topic + "'" + "," + "'" + content + "'" + "," + "'" + create_time + "'" + ")"
 		_, err := db.Exec(query)
+		checkerr(err)
+		users_query := "SELECT no_of_threads FROM users"
+		rows, err := db.Query(users_query)
+		checkerr(err)
+		var no_of_threads int
+		for rows.Next() {
+
+			err := rows.Scan(&no_of_threads)
+			checkerr(err)
+
+		}
+
+		no_of_threads++
+
+		update_users_query := "UPDATE users SET no_of_threads=" + "'" + strconv.Itoa(no_of_threads) + "'" + " WHERE username=" + "'" + split[1] + "'"
+		_, err = db.Exec(update_users_query)
 
 		checkerr(err)
 		// fmt.Println("create_thread4")
@@ -115,6 +132,20 @@ func read_thread(w http.ResponseWriter, r *http.Request) {
 
 		query := "INSERT INTO post(thread_user_name, thread_id, post_user_name, content, post_id) VALUES(" + "'" + m["UserName"][0] + "'" + "," + "'" + m["Id"][0] + "'" + "," + "'" + split[1] + "'" + "," + "'" + rep + "'" + "," + "'" + id.String() + "'" + ")"
 		_, err := db.Exec(query)
+		checkerr(err)
+
+		users_query := "SELECT no_of_posts FROM users"
+		rows, err := db.Query(users_query)
+		checkerr(err)
+		var no_of_posts int
+		for rows.Next() {
+			rows.Scan(&no_of_posts)
+		}
+		no_of_posts++
+		update_users_query := "UPDATE users SET no_of_posts=" + "'" + strconv.Itoa(no_of_posts) + "'" + " WHERE username=" + "'" + split[1] + "'"
+		_, err = db.Exec(update_users_query)
+		checkerr(err)
+
 		checkerr(err)
 
 	}
