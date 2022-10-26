@@ -116,6 +116,15 @@ h3 {
   float: right;
 }
 
+#login{
+  width: 100%;
+  text-align: center;
+  color: red;
+  border-radius: calc(.5rem + .5vw);
+  padding: calc(.2rem + .2vw);
+  border: 1px solid red;
+  font-size: calc(.8rem + .3vw);
+}
 #goBottomArrow {
   color: #1bff4190;
   background-color: rgba(42, 75, 61, 0.534);
