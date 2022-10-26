@@ -61,16 +61,18 @@
         <br />
         <hr />
         <form action="" method="post" id="replyForm" class="container">
-          <input
-            name="reply"
-            id="reply"
-            placeholder="Reply here..."
-            autocomplete="off"
-          />
-          <button type="submit" id="submit" title="Reply">
-            <i class="fa-sharp fa-solid fa-paper-plane"></i>
-          </button>
-        </form>
+      <textarea id="reply" placeholder="Reply here..." autocomplete="off"></textarea>
+      <br>
+      <button type="submit" id="submit" title="Reply">
+        <i class="fa-solid fa-reply"></i>
+        Reply
+      </button>
+    </form>
+
+    <a href="#replyForm"
+            ><button title="Go to Bottom" id="goBottomArrow">
+              <i class="fa-solid fa-arrow-down" id="arrow"></i></button
+          ></a>
       </div>
     </div>
     <script src="../js/preLoader.js"></script>
