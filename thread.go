@@ -118,11 +118,6 @@ func read_thread(w http.ResponseWriter, r *http.Request) {
 		b.Post = append(b.Post, post)
 	}
 
-	if !Requestcookie(r) {
-		http.Redirect(w, r, "/login", http.StatusSeeOther)
-		return
-	}
-
 	if r.Method == http.MethodPost {
 
 		rep := r.FormValue("reply")
