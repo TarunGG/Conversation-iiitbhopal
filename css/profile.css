@@ -91,6 +91,7 @@ h6 {
   border-radius: 5px;
   z-index: 2;
   line-break: loose;
+  white-space: nowrap;
 }
 .text::before {
   content: "";

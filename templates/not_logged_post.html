@@ -61,14 +61,6 @@
         <br />
         <hr />
         <form action="" method="post" id="replyForm" class="container">
-          <!-- <input
-          name="reply"
-          id="reply"
-          placeholder="Please login to reply"
-          autocomplete="off"
-          disabled
-          style="cursor: pointer; border: 1px solid red"
-        /> -->
           <button
             id="login"
             type="button"
@@ -77,6 +69,11 @@
             Please login to reply
           </button>
         </form>
+        
+        <a href="#replyForm"
+        ><button title="Go to Bottom" id="goBottomArrow">
+          <i class="fa-solid fa-arrow-down" id="arrow"></i></button
+      ></a>
       </div>
     </div>
 
@@ -91,6 +88,7 @@
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
       crossorigin="anonymous"
     ></script>
+    <script src="../js/post.js"></script>
     <script>
       let login = document.getElementById("login");
       login.addEventListener("click", () => {

@@ -27,16 +27,6 @@ let cardArr = Array.from(card);
 //   }
 // }
 
-
-//LogOut Confirmation
-let logOut=document.getElementById('logOut')
-logOut.addEventListener('click',function(){
-  let conf=confirm('Are you sure you want to Logout ?')
-  if(conf==true){
-    logOut.setAttribute('href','/logout')
-  }
-})
-
 // Searching
 const searchInput = document.getElementById("searchInput");
 const clearBtn = document.getElementById("clearBtn");
@@ -83,3 +73,12 @@ window.onscroll=function(){
     goAtTopArrow.style.visibility="hidden"
   }
 }
+
+//LogOut Confirmation
+let logOut=document.getElementById('logOut')
+logOut.addEventListener('click',function(){
+  let conf=confirm('Are you sure you want to Logout ?')
+  if(conf==true){
+    logOut.setAttribute('href','/logout')
+  }
+})
