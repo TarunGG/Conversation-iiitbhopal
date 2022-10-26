@@ -233,6 +233,10 @@ nav {
   width: 100%;
 }
 
+.cardDivNext{
+  margin-left: 1px;
+}
+
 .thread {
   transition: all 0.5s;
   padding: 0.6rem;
