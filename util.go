@@ -48,25 +48,12 @@ func set_get(w http.ResponseWriter, r *http.Request) {
 		http.SetCookie(w, cookie)
 	} else {
 		split := strings.Split(cookie.Value, "|")
-		//// fmt.Println(split[1])
+
 		usersession[split[0]] = split[1]
 
 	}
 
 }
-
-// func dataret(str string) string {
-// 	query := "SELECT Name FROM demondb.users WHERE UserName = '" + str + "'"
-// 	row, err := db.Query(query)
-// 	checkerr(err)
-// 	var name string
-// 	for row.Next() {
-// 		err = row.Scan(&name)
-// 		fmt.Println(row.Scan(&name), str)
-// 		checkerr(err)
-// 	}
-// 	return name
-// }
 
 func otpgenerator() (string, error) {
 	codes := make([]byte, 6)
@@ -82,11 +69,11 @@ func otpgenerator() (string, error) {
 }
 
 func sendEmail(email string) {
-	//// fmt.Println("sending email")
+
 	otp, err = otpgenerator()
 	checkerr(err)
 	body := "Hello User, welcome to Conversation. Your Email verification code is " + otp
-	//// fmt.Println(otp)
+
 	m := gomail.NewMessage()
 	m.SetHeader("From", "letsconversate@zohomail.in")
 	m.SetHeader("To", email)
@@ -104,16 +91,9 @@ func sendEmail(email string) {
 }
 
 func (thread *thread) Created_time() string {
-	return time.Now().Format("02-Jan-2006")
+	return time.Now().Format("02-01-2006")
 }
 
 func (post *post) Created_time() string {
-	return time.Now().Format("02-Jan-2006")
+	return time.Now().Format("02-01-2006")
 }
-
-// func generatetemplate(files []string) *template.Template {
-// 	//// generating template.
-// 	t, err := template.ParseFiles(files...)
-// 	checkerr(err)
-// 	return t
-// }

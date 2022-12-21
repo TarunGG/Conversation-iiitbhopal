@@ -22,21 +22,6 @@ func profile(w http.ResponseWriter, r *http.Request) {
 		}
 		fmt.Println(profile)
 
-		// query = `SELECT * FROM thread WHERE username=` + `"` + username + `"`
-
-		// rows, err = db.Query(query)
-		// checkerr(err)
-		// for rows.Next() {
-		// 	profile.NoThread++
-		// }
-		// query = `SELECT * FROM post WHERE post_user_name=` + `"` + username + `"`
-
-		// rows, err = db.Query(query)
-		// checkerr(err)
-		// for rows.Next() {
-		// 	profile.NoPost++
-		// }
-
 		tpl.ExecuteTemplate(w, "profile.html", profile)
 
 	} else {

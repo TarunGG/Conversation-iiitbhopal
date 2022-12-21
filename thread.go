@@ -17,16 +17,12 @@ func create(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == http.MethodPost {
 
-		// // fmt.Println("create_thread1")
 		var thread_ *thread
 		topic := r.FormValue("topic")
 		content := r.FormValue("content")
 		id := uuid.New()
 		set_get(w, r)
 		split := strings.Split(cookie.Value, "|")
-		// fmt.Println(cookie.Value, split)
-
-		// fmt.Println("create_thread2")
 
 		thread_ = &thread{
 			Id:       id,
@@ -34,9 +30,9 @@ func create(w http.ResponseWriter, r *http.Request) {
 			Topic:    topic,
 			Content:  content,
 		}
-		// fmt.Println("create_thread3")
+
 		create_time := thread_.Created_time()
-		// fmt.Println(create_time)
+
 		query := "INSERT INTO thread(id, username, topic, content, created_at) VALUES (" + "'" + id.String() + "'" + "," + "'" + split[1] + "'" + "," + "'" + topic + "'" + "," + "'" + content + "'" + "," + "'" + create_time + "'" + ")"
 		_, err := db.Exec(query)
 		checkerr(err)
@@ -57,9 +53,9 @@ func create(w http.ResponseWriter, r *http.Request) {
 		_, err = db.Exec(update_users_query)
 
 		checkerr(err)
-		// fmt.Println("create_thread4")
+
 		http.Redirect(w, r, "/", http.StatusSeeOther)
-		// fmt.Println("create_thread5")
+
 		return
 	}
 
