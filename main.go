@@ -16,7 +16,7 @@ func init() {
 
 func main() {
 
-	url := "postgres://godslayer12:HXj0cunlOD9V1TOy1HixxcURf71HDAdJ@dpg-cehad102i3mqvl8kh43g-a/conversation_fqva"
+	url := "postgres://postgres_l42c_user:RnMCpCKepeKYPRK0KCNMvFtA81WjBbhU@dpg-cgcfqsu4dad6fr4th90g-a.oregon-postgres.render.com/postgres_l42c"
 	db, err = sql.Open("postgres", url)
 	checkerr(err)
 	defer db.Close()
